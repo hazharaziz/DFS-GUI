@@ -5,7 +5,7 @@ import pygame.event as pe
 
 class Node(object):
 
-    def __init__(self,window,color,pos):
+    def __init__(self,window,color,pos = (0,0)):
         self.color = color
         self.display = False
         self.window = window
