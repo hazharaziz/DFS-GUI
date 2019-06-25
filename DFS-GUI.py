@@ -2,6 +2,7 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 from Node import *
+from Button import *
 
 pygame.init()
 
@@ -15,6 +16,10 @@ white = (255,255,255)
 # node = Node(window, white)
 
 node = None
+
+
+
+button = Button()
 
 nodes = []
 
