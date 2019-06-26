@@ -20,7 +20,7 @@ class Button:
 
         if self.text != '':
             font = pygame.font.SysFont('Times New Roman',25)
-            text = font.render(self.text,1,(0,0,0))
+            text = font.render(self.text,1,(255,255,255))
             self.window.blit(text,(self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
 
 
