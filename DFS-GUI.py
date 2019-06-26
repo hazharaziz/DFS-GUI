@@ -1,9 +1,12 @@
 import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
+from enum import Enum
 from Node import *
 from Button import *
 from AddNode import *
+from AddEdge import *
+from State import *
 
 pygame.init()
 
@@ -26,12 +29,14 @@ buttons = [
 
 def main(window,colors,buttons):
 
-    # nodes = []
+    state = None
+
+    nodes = []
 
     while True:
         window.fill(colors['paper'])
 
-        pygame.draw.lines(window,colors['emerald'],False,((20,70),(780,70)))
+        pygame.draw.line(window,colors['emerald'],(20,70),(780,70))
 
 
         buttons[0].draw(colors['emerald'])
@@ -39,7 +44,6 @@ def main(window,colors,buttons):
         buttons[2].draw(colors['emerald'])
         buttons[3].draw(colors['emerald'])
 
-        node = Node(window,colors['white'])
 
         pos = pygame.mouse.get_pos()
 
@@ -49,8 +53,19 @@ def main(window,colors,buttons):
                 sys.exit()
 
             if event.type == pl.MOUSEBUTTONDOWN:
+                print("...")
                 if buttons[0].isOver(pos):
-                    add_node(window, buttons,colors)
+                    state = State.add_node
+                    print('.')
+                    # break
+                    # add_node(window, buttons, colors, nodes)
+
+                if buttons[1].isOver(pos):
+                    state = State.add_edge
+                    # add_edge(window, buttons, colors, nodes)
+                    print("..")
+                    # break
+
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:
                     if button.isOver(pos):
@@ -58,13 +73,12 @@ def main(window,colors,buttons):
                     else:
                         button.color = colors['blacksteel']
 
+        if state == State.add_node:
+            add_node(window, buttons, colors, nodes)
 
+        if state == State.add_edge:
+            add_edge(window, buttons, colors, nodes)
 
-
-
-        # for i in range(len(nodes)):
-        #     if nodes[i].display:
-        #         nodes[i].draw()
 
 
         pygame.display.update()
