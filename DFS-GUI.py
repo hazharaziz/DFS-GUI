@@ -7,6 +7,8 @@ from Button import *
 from AddNode import *
 from AddEdge import *
 from State import *
+from Graph import *
+
 
 pygame.init()
 
@@ -32,6 +34,8 @@ def main(window,colors,buttons):
     state = None
 
     nodes = []
+
+    graph = Graph(window)
 
     while True:
         window.fill(colors['paper'])
@@ -74,10 +78,10 @@ def main(window,colors,buttons):
                         button.color = colors['blacksteel']
 
         if state == State.add_node:
-            add_node(window, buttons, colors, nodes)
+            add_node(window, buttons, colors, graph,nodes)
 
         if state == State.add_edge:
-            add_edge(window, buttons, colors, nodes)
+            add_edge(window, buttons, colors, graph,nodes)
 
 
 

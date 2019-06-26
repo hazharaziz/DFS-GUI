@@ -1,6 +1,7 @@
 import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
+from Graph import *
 
 
 class Node(object):

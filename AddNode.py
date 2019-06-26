@@ -1,13 +1,14 @@
 import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
-
 from AddEdge import add_edge
 from Node import *
 from Button import *
 from State import *
+from Graph import *
 
-def add_node(window, buttons,colors,nodes):
+
+def add_node(window, buttons,colors,graph,nodes):
 
 
     node = None
@@ -17,7 +18,7 @@ def add_node(window, buttons,colors,nodes):
     while True:
         window.fill(colors['paper'])
 
-        pygame.draw.lines(window,colors['emerald'],False,((20,70),(780,70)))
+        pygame.draw.line(window,colors['emerald'],(20,70),(780,70))
 
         buttons[0].draw(colors['emerald'])
         buttons[1].draw(colors['emerald'])
@@ -40,8 +41,9 @@ def add_node(window, buttons,colors,nodes):
                     node.text = "%d"%(i)
                     node.display = True
                     nodes.append(node)
+
                 if buttons[1].isOver(pos):
-                    add_edge(window,buttons,colors,nodes)
+                    add_edge(window,buttons,colors,graph,nodes)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:

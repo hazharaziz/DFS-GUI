@@ -3,13 +3,13 @@ import pygame.locals as pl
 import pygame.event as pe
 from Node import *
 from Button import *
+from Graph import *
 
 
 
+def add_edge(window,buttons,colors,graph,nodes):
 
-def add_edge(window,buttons,colors,nodes):
-
-    node1 , node2 = None , None
+    start_node = None
 
     new_nodes = []
 
@@ -33,19 +33,21 @@ def add_edge(window,buttons,colors,nodes):
             if event.type == pl.MOUSEBUTTONDOWN:
                 for node in nodes:
                     if node.isOver(pos):
-                        print('.')
+                        # print('.')
                         # node.color = colors['yellow']
-                        if node1 != None:
-                            print('..')
-                            node1.target = node
-                            node1.drawEdge(colors['black'])
-                            new_nodes.append([node1,node])
-
-                            node1 = None
-                            print('...')
+                        if start_node != None:
+                            # print('..')
+                            node.color = colors['yellow']
+                            new_nodes.append([start_node,node])
+                            graph.add_edge(start_node,node)
+                            print(graph.adj_dict[start_node].text)
+                            # node.color = colors['brighblue']
+                            start_node = None
+                            # print('...')
                         else:
-                            print('....')
-                            node1 = node
+                            # print('....')
+                            start_node = node
+                            start_node.color = colors['yellow']
 
 
             if event.type == pl.MOUSEMOTION:
@@ -57,14 +59,13 @@ def add_edge(window,buttons,colors,nodes):
 
 
         for node in nodes:
+            node.color = colors['brightblue']
             node.draw()
 
 
         for edge in new_nodes:
             if len(edge) == 2:
                 pygame.draw.line(window,colors['blacksteel'],edge[0].pos,edge[1].pos)
-
-
 
         pygame.display.update()
 
