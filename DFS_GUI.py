@@ -44,15 +44,11 @@ def main(window,colors,buttons):
         pygame.draw.line(window,colors['emerald'],(20,70),(780,70))
 
         drawButtons(buttons,colors['emerald'])
-        # buttons[0].draw(colors['emerald'])
-        # buttons[1].draw(colors['emerald'])
-        # buttons[2].draw(colors['emerald'])
-        # buttons[3].draw(colors['emerald'])
 
         pos = pygame.mouse.get_pos()
 
         for event in pe.get():
-            if event.type == pl.QUIT: 
+            if event.type == pl.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pl.KEYDOWN:
@@ -62,15 +58,6 @@ def main(window,colors,buttons):
 
             if event.type == pl.MOUSEBUTTONDOWN:
                 button_handler(window, buttons, colors, graph, nodes,edges,i,pos)
-                # if buttons[0].isOver(pos):
-                #     AddNode.add_node(window, buttons, colors, graph, nodes,edges,i)
-                # if buttons[1].isOver(pos):
-                #     AddEdge.add_edge(window, buttons, colors, graph, nodes,edges,i)
-                # if buttons[2].isOver(pos):
-                #     dfs_traversal(window, buttons, colors, graph, nodes,edges)
-                # if buttons[3].isOver(pos):
-                #     reset(window, buttons, colors,graph,nodes,edges)
-
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:

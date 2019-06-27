@@ -6,7 +6,6 @@ from DFS_Traversal import *
 from Edge import Edge
 from Graph import *
 from Handle_Button import *
-# from Reset import *
 
 
 def add_edge(window,buttons,colors,graph,nodes,edges,i):
