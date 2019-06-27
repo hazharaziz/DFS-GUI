@@ -2,13 +2,10 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 from Button import *
-from DFS_Traversal import *
-import AddNode
-from AddEdge import *
+from DFS import *
 from Reset import *
-from State import *
 from Graph import *
-
+from Handle_Button import *
 
 
 pygame.init()
@@ -20,7 +17,7 @@ pygame.display.set_caption("DFS GUI")
 
 colors = {'black':(0, 0, 0),'white':(255, 255, 255),'blacksteel':(8,7,6),'paper':(239,239,239),
           'goldleaf' : (209, 178, 128),'brightblue':(51,123,174),'yellow':(235,223,0),'emerald':(38,92,0),
-          'silver':(89,77,70)}
+          'silver':(89,77,70),'green':(24,255,0),'red':(255,0,0)}
 
 buttons = [
     Button(window, colors['blacksteel'], 20, 20, 160, 40, 'AddNode'),
@@ -30,26 +27,23 @@ buttons = [
 ]
 
 
+global i
 
 def main(window,colors,buttons):
 
-    state = None
+    i = 0
 
+    edges = []
     nodes = []
 
-    graph = Graph(window)
+    graph = Graph(window,colors)
 
     while True:
         window.fill(colors['paper'])
 
         pygame.draw.line(window,colors['emerald'],(20,70),(780,70))
 
-
-        buttons[0].draw(colors['emerald'])
-        buttons[1].draw(colors['emerald'])
-        buttons[2].draw(colors['emerald'])
-        buttons[3].draw(colors['emerald'])
-
+        drawButtons(buttons,colors['emerald'])
 
         pos = pygame.mouse.get_pos()
 
@@ -57,19 +51,13 @@ def main(window,colors,buttons):
             if event.type == pl.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pl.KEYDOWN:
+                if event.key == pl.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
 
             if event.type == pl.MOUSEBUTTONDOWN:
-                if buttons[0].isOver(pos):
-                    AddNode.add_node(window, buttons, colors, graph, nodes)
-
-                if buttons[1].isOver(pos):
-                    add_edge(window, buttons, colors, graph, nodes)
-                if buttons[2].isOver(pos):
-                    dfs_traversal(window, buttons, colors, graph, nodes)
-                if buttons[3].isOver(pos):
-                    print(".")
-                    reset(window, buttons, colors,graph,nodes)
-
+                button_handler(window, buttons, colors, graph, nodes,edges,i,pos)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:
@@ -78,20 +66,13 @@ def main(window,colors,buttons):
                     else:
                         button.color = colors['blacksteel']
 
-        # if state == State.add_node:
-        #     add_node(window, buttons, colors, graph,nodes)
-        #
-        # if state == State.add_edge:
-        #     add_edge(window, buttons, colors, graph,nodes)
-        #
-        # if state == State.dfs:
-        #     dfs_traversal(window,buttons,colors,graph,nodes)
-        #
-        # if state == State.reset:
-        #     reset(window,buttons,colors)
-
+        graph.nodes = nodes
+        graph.edges = edges
+        graph.graph_show()
 
         pygame.display.update()
+
+
 
 if __name__ == '__main__':
     main(window,colors,buttons)
