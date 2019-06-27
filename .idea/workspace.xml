@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bbaedcf-d5c7-453d-ad0a-0178ece53912" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AddEdge.py" beforeDir="false" afterPath="$PROJECT_DIR$/AddEdge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/AddNode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DFS_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/DFS_GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DFS_Traversal.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Handle_Button.py" beforeDir="false" afterPath="$PROJECT_DIR$/Handle_Button.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reset.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reset.py" afterDir="false" />
-    </list>
+    <list default="true" id="8bbaedcf-d5c7-453d-ad0a-0178ece53912" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,10 +95,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AddNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="108">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
                 <marker date="1561647193108" expanded="true" signature="205:270" ph="..." />
                 <marker date="1561647193108" expanded="true" signature="299:372" ph="..." />
               </folding>
@@ -548,10 +540,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AddNode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
             <marker date="1561647193108" expanded="true" signature="205:270" ph="..." />
             <marker date="1561647193108" expanded="true" signature="299:372" ph="..." />
           </folding>
