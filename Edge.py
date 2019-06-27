@@ -1,10 +1,7 @@
 import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
-from Node import *
 from Button import *
-
-
 
 class Edge:
 

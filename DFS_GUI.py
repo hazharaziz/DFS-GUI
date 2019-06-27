@@ -1,13 +1,14 @@
 import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
-from enum import Enum
-from Node import *
 from Button import *
-from AddNode import *
+from DFS_Traversal import *
+import AddNode
 from AddEdge import *
+from Reset import *
 from State import *
 from Graph import *
+
 
 
 pygame.init()
@@ -27,6 +28,7 @@ buttons = [
     Button(window, colors['blacksteel'], 420, 20, 160, 40, 'DFS Traversal'),
     Button(window, colors['blacksteel'], 620, 20, 160, 40, 'Reset')
 ]
+
 
 
 def main(window,colors,buttons):
@@ -57,18 +59,17 @@ def main(window,colors,buttons):
                 sys.exit()
 
             if event.type == pl.MOUSEBUTTONDOWN:
-                print("...")
                 if buttons[0].isOver(pos):
-                    state = State.add_node
-                    print('.')
-                    # break
-                    # add_node(window, buttons, colors, nodes)
+                    AddNode.add_node(window, buttons, colors, graph, nodes)
 
                 if buttons[1].isOver(pos):
-                    state = State.add_edge
-                    # add_edge(window, buttons, colors, nodes)
-                    print("..")
-                    # break
+                    add_edge(window, buttons, colors, graph, nodes)
+                if buttons[2].isOver(pos):
+                    dfs_traversal(window, buttons, colors, graph, nodes)
+                if buttons[3].isOver(pos):
+                    print(".")
+                    reset(window, buttons, colors,graph,nodes)
+
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:
@@ -77,19 +78,27 @@ def main(window,colors,buttons):
                     else:
                         button.color = colors['blacksteel']
 
-        if state == State.add_node:
-            add_node(window, buttons, colors, graph,nodes)
-
-        if state == State.add_edge:
-            add_edge(window, buttons, colors, graph,nodes)
-
+        # if state == State.add_node:
+        #     add_node(window, buttons, colors, graph,nodes)
+        #
+        # if state == State.add_edge:
+        #     add_edge(window, buttons, colors, graph,nodes)
+        #
+        # if state == State.dfs:
+        #     dfs_traversal(window,buttons,colors,graph,nodes)
+        #
+        # if state == State.reset:
+        #     reset(window,buttons,colors)
 
 
         pygame.display.update()
 
-
 if __name__ == '__main__':
     main(window,colors,buttons)
+
+
+
+
 
 
 

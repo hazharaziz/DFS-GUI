@@ -1,15 +1,17 @@
 import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
-from AddEdge import add_edge
+from AddEdge import *
+from DFS_Traversal import *
+from DFS_Traversal import dfs_traversal
 from Node import *
-from Button import *
-from State import *
 from Graph import *
-
+# import Reset
+# from DFS_GUI import *
+# import DFS_GUI
+from Reset import *
 
 def add_node(window, buttons,colors,graph,nodes):
-
 
     node = None
 
@@ -44,6 +46,10 @@ def add_node(window, buttons,colors,graph,nodes):
 
                 if buttons[1].isOver(pos):
                     add_edge(window,buttons,colors,graph,nodes)
+                if buttons[2].isOver(pos):
+                    dfs_traversal(window,buttons,colors,graph,nodes)
+                if buttons[3].isOver(pos):
+                    reset(window, buttons, colors,graph,nodes)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:
