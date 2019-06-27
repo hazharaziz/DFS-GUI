@@ -2,8 +2,7 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 import AddEdge
-from DFS_Traversal import *
-from DFS_Traversal import dfs_traversal
+from DFS import *
 from Node import *
 from Graph import *
 from Handle_Button import *

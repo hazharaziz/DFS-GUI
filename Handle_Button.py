@@ -1,6 +1,6 @@
 import AddEdge
 import AddNode
-import DFS_Traversal
+import DFS
 import Reset
 
 

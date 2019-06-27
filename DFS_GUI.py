@@ -2,7 +2,7 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 from Button import *
-from DFS_Traversal import *
+from DFS import *
 from Reset import *
 from Graph import *
 from Handle_Button import *
