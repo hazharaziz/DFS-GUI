@@ -1,4 +1,3 @@
 
-
-def dfs_traversal(window,colors,buttons,graph,nodes):
-    print('0')
+def dfs_traversal(window,buttons,colors,graph,nodes,edges):
+    pass
