@@ -8,22 +8,18 @@ from Graph import *
 from Handle_Button import *
 
 
-def add_edge(window,buttons,colors,graph,nodes,edges,i):
-
+def add_edge(window, buttons, colors, graph, nodes, edges, i):
     start_node = None
     edge = None
 
     while True:
         window.fill(colors['paper'])
 
-        pygame.draw.line(window,colors['emerald'],(20,70),(780,70))
+        pygame.draw.line(window, colors['emerald'], (20, 70), (780, 70))
         pos = pygame.mouse.get_pos()
-        edge = Edge(window,colors['blacksteel'])
+        edge = Edge(window, colors['blacksteel'])
 
-
-        drawButtons(buttons,colors['emerald'])
-
-
+        drawButtons(buttons, colors['emerald'])
 
         for event in pe.get():
             if event.type == pl.QUIT:
@@ -39,14 +35,15 @@ def add_edge(window,buttons,colors,graph,nodes,edges,i):
                     if node.isOver(pos):
                         if start_node != None:
                             edge.start_node = start_node
+                            # graph.adgacency_list[start_node.data].append(end_node.data)
+                            # graph.adgacency_list[end_node.data].append(start_node.data)
                             edge.end_node = node
                             edges.append(edge)
                             start_node = None
                         else:
                             start_node = node
 
-                button_handler(window, buttons, colors, graph, nodes,edges,i,pos)
-
+                button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:
@@ -58,5 +55,3 @@ def add_edge(window,buttons,colors,graph,nodes,edges,i):
         graph.edges = edges
         graph.graph_show()
         pygame.display.update()
-
-

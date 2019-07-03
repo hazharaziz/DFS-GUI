@@ -14,26 +14,24 @@ def collide(pos, node):
     return False
 
 
-def create_node(node,pos, i):
+def create_node(node, pos, i):
     node.pos = pos
     node.text = "%d" % (i)
+    node.data = i
     node.display = True
 
 
-def add_node(window, buttons,colors,graph,nodes,edges,i):
-
+def add_node(window, buttons, colors, graph, nodes, edges, i):
     node = None
-
-
 
     while True:
         window.fill(colors['paper'])
 
-        pygame.draw.line(window,colors['emerald'],(20,70),(780,70))
+        pygame.draw.line(window, colors['emerald'], (20, 70), (780, 70))
 
-        drawButtons(buttons,colors['emerald'])
+        drawButtons(buttons, colors['emerald'])
 
-        node = Node(window,colors['green'])
+        node = Node(window, colors['green'])
 
         pos = pygame.mouse.get_pos()
 
@@ -49,14 +47,14 @@ def add_node(window, buttons,colors,graph,nodes,edges,i):
                 if pos[1] > 90:
                     if len(nodes) != 0:
                         if not any([collide(pos, x) for x in nodes]):
-                            create_node(node,pos,i)
+                            create_node(node, pos, i)
                             nodes.append(node)
                             i += 1
                     else:
                         create_node(node, pos, i)
                         nodes.append(node)
                         i += 1
-                button_handler(window, buttons, colors, graph, nodes,edges,i,pos)
+                button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:
@@ -70,21 +68,3 @@ def add_node(window, buttons,colors,graph,nodes,edges,i):
         graph.graph_show()
 
         pygame.display.update()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
