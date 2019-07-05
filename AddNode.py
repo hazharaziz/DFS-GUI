@@ -5,7 +5,7 @@ import AddEdge
 from DFS import *
 from Node import *
 from Graph import *
-from Handle_Button import *
+import Handle_Button
 
 
 def collide(pos, node):
@@ -29,7 +29,7 @@ def add_node(window, buttons, colors, graph, nodes, edges, i):
 
         pygame.draw.line(window, colors['emerald'], (20, 70), (780, 70))
 
-        drawButtons(buttons, colors['emerald'])
+        Handle_Button.drawButtons(buttons, colors['emerald'])
 
         node = Node(window, colors['green'])
 
@@ -54,7 +54,7 @@ def add_node(window, buttons, colors, graph, nodes, edges, i):
                         create_node(node, pos, i)
                         nodes.append(node)
                         i += 1
-                button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
+                Handle_Button.button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:

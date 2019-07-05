@@ -5,7 +5,7 @@ import AddNode
 from DFS import *
 from Edge import Edge
 from Graph import *
-from Handle_Button import *
+import Handle_Button 
 
 
 def add_edge(window, buttons, colors, graph, nodes, edges, i):
@@ -19,7 +19,7 @@ def add_edge(window, buttons, colors, graph, nodes, edges, i):
         pos = pygame.mouse.get_pos()
         edge = Edge(window, colors['blacksteel'])
 
-        drawButtons(buttons, colors['emerald'])
+        Handle_Button.drawButtons(buttons, colors['emerald'])
 
         for event in pe.get():
             if event.type == pl.QUIT:
@@ -43,7 +43,7 @@ def add_edge(window, buttons, colors, graph, nodes, edges, i):
                         else:
                             start_node = node
 
-                button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
+                Handle_Button.button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:

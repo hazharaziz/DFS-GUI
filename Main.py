@@ -2,10 +2,15 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 from Button import *
-from DFS import *
-from Reset import *
+# from DFS import *
+# from Reset import *
 from Graph import *
-from Handle_Button import *
+# from Handle_Button import *
+import AddEdge
+import AddNode
+import DFS
+import Handle_Button
+
 
 pygame.init()
 
@@ -40,7 +45,7 @@ def main(window, colors, buttons):
 
         pygame.draw.line(window, colors['emerald'], (20, 70), (780, 70))
 
-        drawButtons(buttons, colors['emerald'])
+        Handle_Button.drawButtons(buttons, colors['emerald'])
 
         pos = pygame.mouse.get_pos()
 
@@ -54,7 +59,7 @@ def main(window, colors, buttons):
                     sys.exit()
 
             if event.type == pl.MOUSEBUTTONDOWN:
-                button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
+                Handle_Button.button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
 
             if event.type == pl.MOUSEMOTION:
                 for button in buttons:

@@ -4,7 +4,7 @@ import pygame.event as pe
 from Node import *
 from Button import *
 from collections import defaultdict
-
+import time
 
 class Graph:
 
@@ -22,15 +22,16 @@ class Graph:
             edge.draw()
 
         for node in self.nodes:
-            node.color = self.colors['green']
+            if node.color != self.colors['brightblue']:
+                node.color = self.colors['green']
             node.draw()
 
-        self.adjacency_list = {i:[] for i in range(len(self.nodes))} 
+        self.adjacency_list = {i:[] for i in range(len(self.nodes))}
 
         for edge in self.edges:
-            #  if edge.start_node.data != edge.end_node.data:
-            self.adjacency_list[edge.start_node.data].append(edge.end_node.data)
-            self.adjacency_list[edge.end_node.data].append(edge.start_node.data)
+            if edge.start_node.data != edge.end_node.data:
+                self.adjacency_list[edge.start_node.data].append(edge.end_node.data)
+                self.adjacency_list[edge.end_node.data].append(edge.start_node.data)
         
         for i in range (len(self.adjacency_list)):
             self.adjacency_list[i].sort()
@@ -38,15 +39,45 @@ class Graph:
    
     def dfs(self, v):
     
-        print(self.adjacency_list)
+        # print(self.adjacency_list)
         visited = [False] * (len(self.adjacency_list))
-        self.dfs_util(v, visited)
+        self._dfs_(v, visited)
+
+        for flag in visited:
+            if flag == False:
+                self._dfs_(visited.index(flag), visited)
         
 
-    def dfs_util(self, v, visited):
+
+    def _dfs_(self, v, visited):
         
         visited[v] = True
         self.dfs_list.append(v)
+
         for i in self.adjacency_list[v]:
             if visited[i] == False:
-                self.dfs_util(i, visited)
+                self._dfs_(i, visited)
+                
+    def dfs_show(self):
+        
+        self.graph_show()
+
+
+
+        # print(self.dfs_list, len(self.nodes), sep='\n')
+        for i in self.dfs_list:
+            # print(self.nodes[i].text)
+            self.nodes[i].color = self.colors['brightblue']
+            self.nodes[i].draw()
+            # if i < len(self.edges):
+            #     self.edges[i].draw()
+
+            pygame.display.update()
+            time.sleep(0.5)
+
+        # time.sleep(10)
+        self.dfs_list = []
+
+        
+
+            
