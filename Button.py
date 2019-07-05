@@ -2,7 +2,7 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 
-
+# Button class for creating and drawing a new button
 class Button:
 
     def __init__(self, window, color, x, y, width, height, text = ''):

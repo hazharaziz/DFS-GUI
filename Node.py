@@ -3,7 +3,7 @@ import pygame.locals as pl
 import pygame.event as pe
 from Graph import *
 
-
+# Node class for creating and drawing new nodes
 class Node:
 
     def __init__(self, window, color, pos=(0, 0), text = '', data = 0,display = False):

@@ -2,19 +2,17 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 from Button import *
-# from DFS import *
-# from Reset import *
 from Graph import *
-# from Handle_Button import *
 import AddEdge
 import AddNode
 import DFS
 import Handle_Button
 
 
+# main window initialization
 pygame.init()
 
-window_size = (800, 500)
+window_size = (800, 700)
 window = pygame.display.set_mode(window_size)
 pygame.display.set_caption("DFS GUI")
 
@@ -29,30 +27,30 @@ buttons = [
     Button(window, colors['blacksteel'], 620, 20, 160, 40, 'Reset')
 ]
 
+# global int for node indexing
 global i
 
-
+# main func for starting the program
 def main(window, colors, buttons):
-    i = 0
 
+    i = 0
     edges = []
     nodes = []
-
     graph = Graph(window, colors)
 
     while True:
         window.fill(colors['paper'])
-
         pygame.draw.line(window, colors['emerald'], (20, 70), (780, 70))
-
-        Handle_Button.drawButtons(buttons, colors['emerald'])
-
+        Handle_Button.draw_btns(buttons, colors['emerald'])
         pos = pygame.mouse.get_pos()
 
+        # event handling
         for event in pe.get():
+
             if event.type == pl.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pl.KEYDOWN:
                 if event.key == pl.K_ESCAPE:
                     pygame.quit()
@@ -70,6 +68,8 @@ def main(window, colors, buttons):
 
         graph.nodes = nodes
         graph.edges = edges
+
+        # showing the graph
         graph.graph_show()
 
         pygame.display.update()

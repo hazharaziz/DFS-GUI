@@ -3,6 +3,7 @@ import pygame.locals as pl
 import pygame.event as pe
 from Button import *
 
+# Edge class for creating new edges between two nodes
 class Edge:
 
     def __init__(self, window, color, start_node = None, end_node = None):

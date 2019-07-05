@@ -3,12 +3,12 @@ import AddNode
 import DFS
 import Reset
 
-
-def drawButtons(buttons, color):
+# draw_btns func for drawing the header buttons
+def draw_btns(buttons, color):
     for i in range(len(buttons)):
         buttons[i].draw(color)
 
-
+# button_handler func for handling the buttons
 def button_handler(window, buttons, colors, graph, nodes, edges, i, pos):
     if buttons[0].isOver(pos):
         AddNode.add_node(window, buttons, colors, graph, nodes, edges, i)

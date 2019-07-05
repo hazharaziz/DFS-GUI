@@ -6,6 +6,7 @@ from Button import *
 from collections import defaultdict
 import time
 
+# Graph class containing the nodes and edges of the graph
 class Graph:
 
     def __init__(self, window, colors, nodes = [], edges = []):
@@ -37,9 +38,8 @@ class Graph:
             self.adjacency_list[i].sort()
         
    
-    def dfs(self, v):
-    
-        # print(self.adjacency_list)
+    def dfs(self, v): # v is the start node
+
         visited = [False] * (len(self.adjacency_list))
         self._dfs_(v, visited)
 
@@ -62,20 +62,12 @@ class Graph:
         
         self.graph_show()
 
-
-
-        # print(self.dfs_list, len(self.nodes), sep='\n')
         for i in self.dfs_list:
-            # print(self.nodes[i].text)
             self.nodes[i].color = self.colors['brightblue']
             self.nodes[i].draw()
-            # if i < len(self.edges):
-            #     self.edges[i].draw()
-
             pygame.display.update()
             time.sleep(0.5)
 
-        # time.sleep(10)
         self.dfs_list = []
 
         
