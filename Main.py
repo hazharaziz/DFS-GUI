@@ -7,11 +7,13 @@ import AddEdge
 import AddNode
 import DFS
 import Handle_Button
+import time
 
 
 # main window initialization
 pygame.init()
 
+clock = pygame.time.Clock()
 window_size = (800, 700)
 window = pygame.display.set_mode(window_size)
 pygame.display.set_caption("DFS GUI")
@@ -37,6 +39,8 @@ def main(window, colors, buttons):
     edges = []
     nodes = []
     graph = Graph(window, colors)
+    action = 0
+    on_button = False
 
     while True:
         window.fill(colors['paper'])
@@ -56,16 +60,22 @@ def main(window, colors, buttons):
                     pygame.quit()
                     sys.exit()
 
-            if event.type == pl.MOUSEBUTTONDOWN:
-                Handle_Button.button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
+            on_button = any([button.isOver(pos) for button in buttons])
 
-            if event.type == pl.MOUSEMOTION:
-                for button in buttons:
-                    if button.isOver(pos):
-                        button.color = colors['silver']
-                    else:
-                        button.color = colors['blacksteel']
+            if event.type == pl.MOUSEBUTTONDOWN and on_button:
+                btn = Handle_Button.button_handler(window, buttons, colors, graph, nodes, edges, i, pos)
+                if btn != None:
+                    action = btn
+                print(action)
 
+            for button in buttons:
+                if button.isOver(pos):
+                    button.color = colors['silver']
+                else:
+                    button.color = colors['blacksteel']
+
+            if action == 1:
+                AddNode.add_node(window, buttons, colors, graph, nodes, edges, i, event)
         graph.nodes = nodes
         graph.edges = edges
 
