@@ -10,9 +10,7 @@ import Handle_Button
 
 # collide fund for checking if two nodes collide
 def collide(pos, node):
-    if node.isOver(pos):
-        return True
-    return False
+    return node.isOver(pos)
 
 # create_node func for creatind a new node
 def create_node(node, pos, i):
