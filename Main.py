@@ -79,7 +79,7 @@ def main(window, colors, buttons):
             elif action == 2:
                 AddEdge.add_edge(window, buttons, colors, graph, nodes, edges, node_index, event)
             elif action == 3:
-                DFS.depth_first_search(window, buttons, colors, graph, nodes, edges, event)
+                DFS.depth_first_search(window, buttons, colors, graph, nodes, edges)
             elif action == 0:
                 Reset.reset(window, buttons, colors, graph, nodes, edges)
 
