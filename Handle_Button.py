@@ -1,5 +1,4 @@
 import AddEdge
-import AddNode
 import DFS
 import Reset
 
@@ -11,10 +10,10 @@ def draw_btns(buttons, color):
 # button_handler func for handling the buttons
 def button_handler(window, buttons, colors, graph, nodes, edges, i, pos):
     if buttons[0].isOver(pos):
-        AddNode.add_node(window, buttons, colors, graph, nodes, edges, i)
+        return 1
     if buttons[1].isOver(pos):
-        AddEdge.add_edge(window, buttons, colors, graph, nodes, edges, i)
+        return 2
     if buttons[2].isOver(pos):
-        DFS.depth_first_search(window, buttons, colors, graph, nodes, edges)
+        return 3
     if buttons[3].isOver(pos):
-        Reset.reset(window, buttons, colors, graph, nodes, edges)
+        return 0
