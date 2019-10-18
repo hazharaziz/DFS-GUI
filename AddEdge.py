@@ -26,8 +26,8 @@ def add_edge(window, buttons, colors, graph, nodes, edges, i, event):
                     print("end")
                     graph.current_edge.end_node = node
                     graph.edges.append(graph.current_edge)
-                    graph.current_edge.start_node = Node(window, colors)
-                    graph.current_edge.end_node = Node(window, colors)
+                    graph.current_edge.start_node = None
+                    graph.current_edge.end_node = None
 
         #graph.edges = edges
 

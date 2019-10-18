@@ -23,6 +23,7 @@ def create_node(node, pos, i):
 def add_node(window, buttons, colors, graph, nodes, edges, i, event):
     node = Node(window, colors['green'])
     pos = pygame.mouse.get_pos()
+    add_node = False
 
     # event handling
     if event.type == pl.MOUSEBUTTONDOWN:
@@ -31,11 +32,11 @@ def add_node(window, buttons, colors, graph, nodes, edges, i, event):
                 if not any([collide(pos, x) for x in nodes]):
                     create_node(node, pos, i)
                     nodes.append(node)
-                    i += 1
+                    add_node = True
             else:
                 create_node(node, pos, i)
                 nodes.append(node)
-                i += 1
+                add_node = True
 
         graph.nodes = nodes
         graph.edges = edges
@@ -44,3 +45,4 @@ def add_node(window, buttons, colors, graph, nodes, edges, i, event):
         graph.graph_show()
 
         pygame.display.update()
+        return add_node
