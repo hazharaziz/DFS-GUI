@@ -6,6 +6,7 @@ from Graph import *
 import AddEdge
 import AddNode
 import DFS
+import Reset
 import Handle_Button
 import time
 
@@ -39,7 +40,7 @@ def main(window, colors, buttons):
     edges = []
     nodes = []
     graph = Graph(window, colors)
-    action = 0
+    action = -1
     on_button = False
 
     while True:
@@ -76,6 +77,13 @@ def main(window, colors, buttons):
 
             if action == 1:
                 AddNode.add_node(window, buttons, colors, graph, nodes, edges, i, event)
+            elif action == 2:
+                AddEdge.add_edge(window, buttons, colors, graph, nodes, edges, i, event)
+            elif action == 3:
+                DFS.depth_first_search(window, buttons, colors, graph, nodes, edges, event)
+            elif action == 0:
+                Reset.reset(window, buttons, colors, graph, nodes, edges)
+
         graph.nodes = nodes
         graph.edges = edges
 
