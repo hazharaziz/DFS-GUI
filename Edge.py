@@ -13,4 +13,4 @@ class Edge:
         self.end_node = end_node
 
     def draw(self):
-        pygame.draw.line(self.window, self.color, self.start_node.pos, self.end_node.pos, 4)
+        pygame.draw.line(self.window, self.color['black'], self.start_node.pos, self.end_node.pos, 4)

@@ -2,6 +2,7 @@ import pygame, sys, random
 import pygame.locals as pl
 import pygame.event as pe
 from Node import *
+from Edge import *
 from Button import *
 from collections import defaultdict
 import time
@@ -13,12 +14,12 @@ class Graph:
         self.window = window
         self.colors = colors
         self.nodes = nodes
+        self.current_edge = Edge(window, colors, None, None)
         self.edges = edges
-        self.adjacency_list = {} 
+        self.adjacency_list = {}
         self.dfs_list = []
 
     def graph_show(self):
-
         for edge in self.edges:
             edge.draw()
 
